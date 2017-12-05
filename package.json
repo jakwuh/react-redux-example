@@ -31,6 +31,8 @@
         "webpack-node-externals": "^1.6.0"
     },
     "scripts": {
-        "start:server": "webpack --config ./build/webpack.server.config.ts -w | nodemon ./dist/server/server.js"
+        "start:server": "npm run build -- -w | nodemon ./dist/server/server.js",
+        "build": "webpack --config ./build/webpack.server.config.ts",
+        "start": "npm run build && node ./dist/server/server.js"
     }
 }
