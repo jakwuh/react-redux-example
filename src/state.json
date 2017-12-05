@@ -1,0 +1,14 @@
+{
+    "cards": [
+        {
+            "id": 1,
+            "name": "Test course",
+            "description": "ololo",
+            "image": "http://via.placeholder.com/1000x1000",
+            "author": {
+                "name": "Jason Miller",
+                "avatar": "http://via.placeholder.com/150x150"
+            }
+        }
+    ]
+}
