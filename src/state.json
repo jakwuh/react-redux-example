@@ -4,9 +4,19 @@
             "id": 1,
             "name": "Test course",
             "description": "ololo",
-            "image": "http://via.placeholder.com/1000x1000",
+            "image": "http://via.placeholder.com/100x100",
             "author": {
                 "name": "Jason Miller",
+                "avatar": "http://via.placeholder.com/150x150"
+            }
+        },
+        {
+            "id": 2,
+            "name": "22 Test course",
+            "description": "gkgkgkgkg",
+            "image": "http://via.placeholder.com/100x100",
+            "author": {
+                "name": "Kij Dere",
                 "avatar": "http://via.placeholder.com/150x150"
             }
         }

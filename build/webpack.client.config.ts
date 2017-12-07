@@ -1,21 +1,23 @@
 import * as webpack from 'webpack';
 import {resolve, join} from 'path';
-import * as nodeExternals from 'webpack-node-externals';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 let root = resolve(__dirname, '../');
 let src = join(root, 'src');
 let dist = join(root, 'dist');
 
 let config: webpack.Configuration = {
-    entry: join(src, 'entries/server.ts'),
+    entry: {
+        index: join(src, 'entries/client.ts'),
+        styles: join(src, 'entries/client.css')
+    },
 
     devtool: 'inline-source-map',
-    target: 'node',
-    externals: [nodeExternals()],
+    target: 'web',
 
     output: {
-        filename: 'server.js',
-        path: join(dist, 'server')
+        filename: '[name].js',
+        path: join(dist, 'client')
     },
 
     resolve: {
@@ -30,14 +32,20 @@ let config: webpack.Configuration = {
         rules: [{
             test: /\.[jt]sx?$/,
             loader: 'babel-loader'
+        }, {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader'
+            })
         }]
     },
 
     plugins: [
+        new ExtractTextPlugin('[name].css'),
         new webpack.DefinePlugin({
-            IS_SERVER: true,
-            IS_CLIENT: false,
-            ASSETS_ROOT: JSON.stringify(join(dist, 'client'))
+            IS_SERVER: false,
+            IS_CLIENT: true
         })
     ]
 };
