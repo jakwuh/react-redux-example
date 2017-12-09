@@ -48,7 +48,8 @@ let config: webpack.Configuration = {
         new webpack.DefinePlugin({
             IS_SERVER: false,
             IS_CLIENT: true,
-            CLIENT_ID: JSON.stringify('f10de77025978ee1ed0b')
+            // CLIENT_ID: JSON.stringify('f10de77025978ee1ed0b') // dev
+            CLIENT_ID: JSON.stringify('fe2214b6b6d577b87355')
         }),
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'production'
