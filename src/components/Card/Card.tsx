@@ -3,26 +3,34 @@ import {Card as PanelCard, CardHeader, CardMedia, CardTitle, CardText, CardActio
 import FlatButton from 'material-ui/FlatButton';
 import {BaseComponent} from 'components/Common/BaseComponent';
 import {Link} from 'react-router-dom'
+import {completeCourse} from 'entities/Course/actions';
 
 export class Card extends BaseComponent {
+    completeCourse() {
+        let {dispatch} = this.context;
+        let {card} = this.props;
+
+        dispatch(completeCourse(card));
+    }
+
     render() {
-        let props = this.props;
+        let {card, full} = this.props;
 
         return <div>
             <br/>
-            <Link to={`/courses/${props.id}`}>
-                <PanelCard style={{background: props.completed ? 'green' : 'white'}}>
+            <Link to={`/courses/${card.id}`}>
+                <PanelCard style={{background: card.completed ? '#1abc9c' : 'white'}}>
                     <CardHeader
-                        title={props.name}
-                        subtitle={props.author.name}
-                        avatar={props.author.avatar}
+                        title={card.name}
+                        subtitle={card.author.name}
+                        avatar={card.author.avatar}
                     />
-                    {props.full && <CardMedia>
-                        <img src={props.image} alt=""/>
+                    {full && <CardMedia>
+                        <img src={card.image} alt=""/>
                     </CardMedia>}
-                    <CardText>{props.description}</CardText>
-                    {props.full && !props.completed && <CardActions>
-                        <FlatButton label="Complete course"/>
+                    <CardText>{card.description}</CardText>
+                    {full && !card.completed && <CardActions>
+                        <FlatButton label="Complete course" onClick={() => this.completeCourse()}/>
                     </CardActions>}
                 </PanelCard>
             </Link>

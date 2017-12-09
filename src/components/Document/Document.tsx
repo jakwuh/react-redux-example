@@ -9,14 +9,14 @@ import {DocumentRestoreData} from 'components/Document/DocumentRestoreData';
 export class Document extends BaseComponent {
 
     render() {
-        let {state} = this.context;
+        let state = this.context.getState();
 
         let CardsListRoute = () => (
             <CardsList {...state}/>
         );
 
         let CardRoute = ({match: {params: {id}}}) => (
-            <Card full {...state.cards.find(card => +card.id === +id)}/>
+            <Card full card={state.cards.find(card => +card.id === +id)}/>
         );
 
         return (
@@ -28,7 +28,7 @@ export class Document extends BaseComponent {
                 {IS_SERVER && <link rel="stylesheet" href="/assets/styles.css"/>}
             </head>
             <body>
-            <DocumentHead/>
+            <DocumentHead user={state.user}/>
             <Switch>
                 <Route path="/courses/:id" component={CardRoute}/>
                 <Route component={CardsListRoute}/>

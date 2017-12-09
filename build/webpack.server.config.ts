@@ -37,7 +37,9 @@ let config: webpack.Configuration = {
         new webpack.DefinePlugin({
             IS_SERVER: true,
             IS_CLIENT: false,
-            ASSETS_ROOT: JSON.stringify(join(dist, 'client'))
+            ASSETS_ROOT: JSON.stringify(join(dist, 'client')),
+            CLIENT_ID: JSON.stringify('f10de77025978ee1ed0b'),
+            CLIENT_SECRET: JSON.stringify('55b29302d04d21f8fc9af8be0e1d4d2af9fd0d6d')
         })
     ]
 };

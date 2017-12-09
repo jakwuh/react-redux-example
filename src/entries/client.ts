@@ -9,3 +9,5 @@ let store = createStore(data);
 let dom = renderDom(store);
 
 ReactDOM.hydrate(dom, document);
+
+store.subscribe(() => ReactDOM.render(dom, document));

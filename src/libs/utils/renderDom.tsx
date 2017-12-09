@@ -4,7 +4,7 @@ import {Document} from 'components/Document/Document';
 import * as React from 'react';
 import {BrowserRouter, StaticRouter} from 'react-router-dom';
 
-export function renderDom(store, req) {
+export function renderDom(store, req?) {
     if (IS_SERVER) {
         global.navigator = {userAgent: req.headers['user-agent']};
 

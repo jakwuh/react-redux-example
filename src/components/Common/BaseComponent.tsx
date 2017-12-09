@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 export class BaseComponent extends React.Component {
 
     static contextTypes = {
-        state: PropTypes.any,
+        getState: PropTypes.any,
         dispatch: PropTypes.any
     };
 

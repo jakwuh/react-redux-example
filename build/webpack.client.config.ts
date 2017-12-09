@@ -45,7 +45,8 @@ let config: webpack.Configuration = {
         new ExtractTextPlugin('[name].css'),
         new webpack.DefinePlugin({
             IS_SERVER: false,
-            IS_CLIENT: true
+            IS_CLIENT: true,
+            CLIENT_ID: JSON.stringify('f10de77025978ee1ed0b')
         })
     ]
 };

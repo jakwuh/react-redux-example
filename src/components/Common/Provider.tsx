@@ -9,14 +9,14 @@ export class Provider extends React.Component {
 
     static childContextTypes = {
         dispatch: PropTypes.any,
-        state: PropTypes.any,
+        getState: PropTypes.any,
         muiTheme: PropTypes.any
     };
 
     getChildContext() {
         return {
-            dispatch: this.props.store.dispatch.bind(this.store),
-            state: this.props.store.getState(),
+            dispatch: (...args) => this.props.store.dispatch(...args),
+            getState: () => this.props.store.getState(),
             muiTheme: this.context.muiTheme
         };
     }
