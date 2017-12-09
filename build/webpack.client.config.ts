@@ -12,7 +12,6 @@ let config: webpack.Configuration = {
         styles: join(src, 'entries/client.css')
     },
 
-    devtool: 'inline-source-map',
     target: 'web',
 
     output: {
@@ -31,7 +30,10 @@ let config: webpack.Configuration = {
     module: {
         rules: [{
             test: /\.[jt]sx?$/,
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            include: [
+                src
+            ]
         }, {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
@@ -47,6 +49,9 @@ let config: webpack.Configuration = {
             IS_SERVER: false,
             IS_CLIENT: true,
             CLIENT_ID: JSON.stringify('f10de77025978ee1ed0b')
+        }),
+        new webpack.EnvironmentPlugin({
+            NODE_ENV: 'production'
         })
     ]
 };
